@@ -17,12 +17,14 @@ class App extends Component {
     };
   }
 
-  getOwners = () => {
-    this.setState({ isLoading: true });
 
+  getOwners = () => {
+    console.log('started process')
+    this.setState({ isLoading: true });
+    console.log('got state')
     axios.get(API + DEFAULT_QUERY)
       .then(result => this.setState({
-        owners: result.data.owners,
+        owners: result.content,
         isLoading: false
       }))
       .catch(error => this.setState({
@@ -34,7 +36,8 @@ class App extends Component {
 
   render() {
     const { owners, isLoading, error } = this.state;
-
+    const string = JSON.stringify(owners, null, 4);
+    console.log(string)
     if (error) {
       return <p>{error.message}</p>;
     }
@@ -47,7 +50,7 @@ class App extends Component {
       <div>
         <button onClick={this.getOwners}>Get Owner Emails</button>
         <div>
-          {owners.statusCode}
+          the emails are{owners}
         </div>
       </div>
     );
