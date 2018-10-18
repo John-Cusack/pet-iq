@@ -24,7 +24,7 @@ class App extends Component {
     console.log('got state')
     axios.get(API + DEFAULT_QUERY)
       .then(result => this.setState({
-        owners: result.content,
+        owners: result,
         isLoading: false
       }))
       .catch(error => this.setState({
@@ -50,7 +50,7 @@ class App extends Component {
       <div>
         <button onClick={this.getOwners}>Get Owner Emails</button>
         <div>
-          the emails are{owners}
+          the emails are{owners.statusCode}
         </div>
       </div>
     );
