@@ -17,7 +17,7 @@ class App extends Component {
     };
   }
 
-  getOwners() {
+  getOwners = () => {
     this.setState({ isLoading: true });
 
     axios.get(API + DEFAULT_QUERY)
@@ -45,13 +45,9 @@ class App extends Component {
 
     return (
       <div>
-        <button onClick={this.getOwners}></button>
+        <button onClick={this.getOwners}>Get Owner Emails</button>
         <div>
-          {owners.map(owners =>{
-            return <Owners
-              email={owners.email}
-            />
-          })}
+          {owners.statusCode}
         </div>
       </div>
     );

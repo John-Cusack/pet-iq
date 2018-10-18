@@ -9,6 +9,13 @@ v1Root = "/api/v1/"
 
 # the heart of the api, handles routing and calls controllers
 
+@app.after_request
+def after_request(response):
+  response.headers.add('Access-Control-Allow-Origin', '*')
+  response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+  response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+  return response
+
 @app.route('/')
 def hello():
 	return "Hi"
