@@ -50,7 +50,7 @@ class App extends Component {
       <div>
         <button onClick={this.getOwners}>Get Owner Emails</button>
         <div>
-          the emails are{owners.statusCode}
+          <Owners email = {owners.data} ></Owners>
         </div>
       </div>
     );
