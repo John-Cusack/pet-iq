@@ -8,6 +8,9 @@ class OwnerSchema(Schema):
 	email = fields.Email(required=True)
 	firstname = fields.String(required=True)
 	lastname = fields.String(required=True)
+	city = fields.String(required=True)
+	state = fields.String(required=True)
+	zip_code = fields.String(required=True)
 	password = fields.String(required=True, load_only=True)
 	dogs = fields.Nested(DogSchema, many=True)
 
